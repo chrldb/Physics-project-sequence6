@@ -45,12 +45,14 @@ def draw_control_panels(screen, control_panels: list[ControlPanel]):
 
 def create_control_panels(screen, text_font, sub_header_font) -> [ControlPanel]:
     control_panels = []
-    for harmonic in available_harmonics:
+    for i in range(len(available_harmonics)):
+        harmonic = available_harmonics[i]
         control_panel = ControlPanel(
             screen=screen,
             harmonic=harmonic,
             left=control_panels_start_pos[0],
-            top=control_panels_start_pos[1] + int(control_panels_height * (harmonic.number - 1)),
+            # top=control_panels_start_pos[1] + int(control_panels_height * (harmonic.number - 1)),
+            top=control_panels_start_pos[1] + int(control_panels_height * i),
             width=control_rectangle_width,
             height=control_panels_height,
             font=text_font,
@@ -254,7 +256,9 @@ if __name__ == "__main__":
         Harmonic(number=2, amplitude=0, base_frequency=global_base_frequency, color=Colors.magenta),
         Harmonic(number=3, amplitude=0, base_frequency=global_base_frequency, color=Colors.yellow),
         Harmonic(number=4, amplitude=0, base_frequency=global_base_frequency, color=Colors.green),
-        Harmonic(number=5, amplitude=0, base_frequency=global_base_frequency, color=Colors.cyan),
-    ]
+        Harmonic(number=7, amplitude=0, base_frequency=global_base_frequency, color=Colors.cyan),
+        Harmonic(number=8, amplitude=0, base_frequency=global_base_frequency, color=Colors.cyan),
+    ] # You shouldn't have more than 5-7 harmonics
+    control_panels_height = (control_rectangle_height - control_panels_header_height) / len(available_harmonics) # Adapt the height to fit the number of harmonics
 
     main()
