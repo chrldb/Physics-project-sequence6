@@ -259,6 +259,7 @@ if __name__ == "__main__":
         Harmonic(number=7, amplitude=0, base_frequency=global_base_frequency, color=Colors.cyan),
         Harmonic(number=8, amplitude=0, base_frequency=global_base_frequency, color=Colors.cyan),
     ] # You shouldn't have more than 5-7 harmonics
-    control_panels_height = (control_rectangle_height - control_panels_header_height) / len(available_harmonics) # Adapt the height to fit the number of harmonics
+    if len(available_harmonics) != NUMBER_OF_HARMONICS:
+        raise ValueError("The number of harmonics must be equal to the NUMBER_OF_HARMONICS constant")
 
     main()

@@ -32,12 +32,16 @@ class Colors:
     transparent = (1, 1, 1)
 
 
+NUMBER_OF_HARMONICS = 6
+
 POINTS_AMOUNT = 600
 REFRESH_RATE = 60
 SOUND_SAMPLING_RATE = 44100
 
 SURFACE_WIDTH = 1280
-SURFACE_HEIGHT = 920
+SURFACE_HEIGHT = 720
+if NUMBER_OF_HARMONICS > 5:
+    SURFACE_HEIGHT = 920
 
 control_rectangle_width = 360
 control_rectangle_height = SURFACE_HEIGHT
@@ -49,6 +53,6 @@ animation_coordination_system_origin = (0.1 * animation_rectangle_width, 0.5 * a
 ANIMATION_RECTANGLE = pg.Rect(0, 0, animation_rectangle_width, animation_rectangle_height)
 CONTROLS_RECTANGLE = pg.Rect(animation_rectangle_width, 0, control_rectangle_width, control_rectangle_height)
 
-control_panels_height = 0.15 * control_rectangle_height
-control_panels_header_height = control_panels_height * 1.5
+control_panels_header_height = 0.225 * control_rectangle_height
+control_panels_height = (control_rectangle_height - control_panels_header_height) / NUMBER_OF_HARMONICS
 control_panels_start_pos = (animation_rectangle_width, control_panels_header_height)
